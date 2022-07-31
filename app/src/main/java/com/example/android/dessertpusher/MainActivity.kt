@@ -82,6 +82,43 @@ class MainActivity : AppCompatActivity(), LifecycleObserver {
         binding.dessertButton.setImageResource(currentDessert.imageId)
     }
 
+    override fun onStart() {
+        super.onStart()
+        Timber.i("onStart was called")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Timber.i("onResume was called")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Timber.i("onPause was called")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Timber.i("onStop was called")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Timber.i("onDestroy was called")
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.main_menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.shareMenuButton -> onShare()
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
     /**
      * Updates the score when the dessert is clicked. Possibly shows a new dessert.
      */
@@ -137,42 +174,5 @@ class MainActivity : AppCompatActivity(), LifecycleObserver {
                 Toast.LENGTH_LONG
             ).show()
         }
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.main_menu, menu)
-        return super.onCreateOptionsMenu(menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.shareMenuButton -> onShare()
-        }
-        return super.onOptionsItemSelected(item)
-    }
-
-    override fun onStart() {
-        super.onStart()
-        Timber.i("onStart was called")
-    }
-
-    override fun onResume() {
-        super.onResume()
-        Timber.i("onResume was called")
-    }
-
-    override fun onPause() {
-        super.onPause()
-        Timber.i("onPause was called")
-    }
-
-    override fun onStop() {
-        super.onStop()
-        Timber.i("onStop was called")
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        Timber.i("onDestroy was called")
     }
 }
