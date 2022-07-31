@@ -65,10 +65,6 @@ class MainActivity : AppCompatActivity(), LifecycleObserver {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        if(BuildConfig.DEBUG)
-            Timber.plant(Timber.DebugTree())
-
         Timber.i("onCreate was called")
 
         // Use Data Binding to get reference to the views
